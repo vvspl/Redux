@@ -8,13 +8,10 @@ store.subscribe(() => {
 
 store.dispatch(increment());
 store.dispatch(increment());
-store.dispatch(increment());
 store.dispatch(decrement());
 store.dispatch(reset());
 
-store.dispatch(addUser({ id: 77, name: 'Roman' }));
-store.dispatch(addUser({ id: 66, name: 'Oleg' }));
-
-store.dispatch(deleteUser(66));
-
-store.dispatch(updateUser(77, { name: 'Roman Hrynko', age: 25 }));
+store.dispatch(addUser({ id: 2, name: 'Eugen' }));
+store.dispatch(addUser({ id: 10, name: 'Olya' }));
+store.dispatch(deleteUser(2));
+store.dispatch(updateUser(77, { name: 'Piter', age: 17 }));
