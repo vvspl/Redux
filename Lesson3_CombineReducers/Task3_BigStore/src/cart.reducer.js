@@ -1,20 +1,20 @@
 import { ADD_PRODUCT, REMOVE_PRODUCT } from './cart.actions';
 
-const initialState = { cart: []};
+const initialState = { products: []};
 
 const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_PRODUCT: {
       return {
         ...state,
-        cart: state.cart.concat(action.payload.productId),
+        products: state.products.concat(action.payload.productId),
       };
     }
 
     case REMOVE_PRODUCT: {
         return {
           ...state,
-          cart: state.cart.filter(prod=>prod.productId!==action.payload.productId),
+          products: state.products.filter(prod=>prod.id!==action.payload.productId),
         };
       }
 
