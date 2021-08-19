@@ -5,6 +5,7 @@ import { weatherDataSelector } from './weather.selectors';
 
 const Weather = (props) => {
 
+  console.log(getWheatherData());
   console.log(props.weatherData);
 
   return (
