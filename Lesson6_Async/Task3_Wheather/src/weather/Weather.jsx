@@ -1,22 +1,24 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { connect } from 'react-redux';
-import {getWheatherData} from './weather.actions';
+import * as weatherActions from './weather.actions';
 import { weatherDataSelector } from './weather.selectors';
 
-const Weather = (props) => {
+const Weather = ({weatherData, getWeatherData}) => {
 
-  console.log(getWheatherData());
-  console.log(props.weatherData);
+  useEffect(() => {
+    getWeatherData();
+  }, []);
 
   return (
     <main className="weather">
       <h1 className="weather__title">Weather data</h1>
       <ul className="cities-list">
-        {}
-        <li className="city">
-          <span className="city__name">Lake Hilmaside</span>
-          <span className="city__temperature">78 F</span>
-        </li>
+      {weatherData.map(weather => (
+          <li key={Math.random()} className="city">
+            <span className="city__name">{weather.name}</span>
+            <span className="city__temperature">{`${weather.temperature} F`}</span>
+          </li>
+        ))}
       </ul>
     </main>
   );
@@ -29,4 +31,8 @@ const mapState = state => {
   };
 };
 
-export default connect(mapState)(Weather);
+const mapDispatch = {
+  getWeatherData: weatherActions.getWeatherData,
+};
+
+export default connect(mapState, mapDispatch)(Weather);

@@ -10,7 +10,7 @@ export const weatherDataReceived = (weatherData) => {
     };
   };
 
-export const getWheatherData = () => {
+export const getWeatherData = () => {
     return function (dispatch) {
       fetchWeatherData().then(weatherData => {
         dispatch(weatherDataReceived(weatherData));
